@@ -1,0 +1,12 @@
+Django==5.2.12
+numpy
+opencv-python
+tensorflow
+keras
+h5py
+scikit-learn
+scikit-image
+matplotlib
+lime
+pillow
+reportlab
