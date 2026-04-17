@@ -1,0 +1,56 @@
+{% extends "predictor/base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <!-- Header -->
+    <div class="mb-4">
+        <h2 class="fw-bold">User Dashboard</h2>
+        <p class="text-muted">Welcome, {{ username }}. Use the system to analyze endoscopy images.</p>
+    </div>
+
+    <!-- Main Actions -->
+    <div class="row">
+
+        <!-- Upload Section -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm p-4 border-0 h-100">
+
+                <h5 class="mb-3">Disease Detection</h5>
+
+                <p class="text-muted">
+                    Upload an endoscopy image to detect conditions such as 
+                    Bleeding, Ulcer, Polyp, or Normal tissue using AI.
+                </p>
+
+                <a href="{% url 'predict' %}" class="btn btn-primary mt-auto">
+                    Upload Image
+                </a>
+
+            </div>
+        </div>
+
+        <!-- History Section -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm p-4 border-0 h-100">
+
+                <h5 class="mb-3">Prediction History</h5>
+
+                <p class="text-muted">
+                    View previously uploaded images and their prediction results 
+                    along with confidence scores and explanations.
+                </p>
+
+                <a href="{% url 'prediction_history' %}" class="btn btn-outline-secondary mt-auto">
+                    View History
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

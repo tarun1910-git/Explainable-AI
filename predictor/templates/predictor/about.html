@@ -1,0 +1,60 @@
+{% extends "predictor/base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">About Endoscopy AI System</h2>
+    </div>
+
+    <div class="card shadow-sm p-4 border-0">
+
+        <p>
+            The Endoscopy AI System is designed to assist in the detection of 
+            gastrointestinal diseases using advanced Artificial Intelligence techniques.
+        </p>
+
+        <p>
+            The system analyzes endoscopy images and classifies them into different 
+            medical categories using deep learning models.
+        </p>
+
+        <h5 class="mt-4">Disease Categories</h5>
+
+        <ul>
+            <li>Bleeding</li>
+            <li>Ulcer</li>
+            <li>Polyp</li>
+            <li>Normal</li>
+        </ul>
+
+        <h5 class="mt-4">Technologies Used</h5>
+
+        <ul>
+            <li>Deep Learning Models (MobileNet / ResNet)</li>
+            <li>TensorFlow / Keras</li>
+            <li>Django Web Framework</li>
+        </ul>
+
+        <h5 class="mt-4">Explainable AI</h5>
+
+        <p>
+            The system incorporates Explainable AI techniques such as Grad-CAM 
+            and LIME to highlight important regions in the image. This helps in 
+            understanding how the model makes decisions.
+        </p>
+
+        <h5 class="mt-4">Objective</h5>
+
+        <p>
+            The main objective of this project is to support early detection 
+            of gastrointestinal diseases and assist medical professionals by 
+            providing reliable and interpretable predictions.
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

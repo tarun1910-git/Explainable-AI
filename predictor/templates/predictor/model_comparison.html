@@ -1,0 +1,67 @@
+{% extends "predictor/base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+```
+<h2 class="text-center mb-4">Admin Model Analysis</h2>
+
+<!-- Prediction Summary -->
+<div class="card shadow-sm p-4 mb-4 border-0">
+    <h5>Prediction Summary</h5>
+    <p>
+        Disease: <strong>{{ predicted_disease }}</strong><br>
+        Confidence: <strong>{{ confidence }}%</strong>
+    </p>
+</div>
+
+<!-- Model Comparison -->
+<div class="card shadow-sm p-4 mb-4 border-0">
+    <h5>Model Performance</h5>
+
+    <table class="table table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Model</th>
+                <th>Score</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for model, value in comparison.items %}
+            <tr>
+                <td>{{ model }}</td>
+                <td>{{ value }}</td>
+                <td>
+                    {% if value > 0.80 %}
+                        <span class="badge bg-success">High</span>
+                    {% elif value > 0.70 %}
+                        <span class="badge bg-warning text-dark">Medium</span>
+                    {% else %}
+                        <span class="badge bg-danger">Low</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Explainability (ONLY Grad-CAM) -->
+<div class="card shadow-sm p-4 border-0">
+    <h5>Model Focus (Verification)</h5>
+
+    <div class="text-center">
+        <img src="{{ gradcam_url }}" class="img-fluid rounded" style="max-width:300px;">
+    </div>
+
+    <p class="text-muted text-center mt-2">
+        Used to verify that the model focuses on relevant regions.
+    </p>
+</div>
+```
+
+</div>
+
+{% endblock %}

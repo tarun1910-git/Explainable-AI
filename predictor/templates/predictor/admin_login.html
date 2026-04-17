@@ -1,0 +1,32 @@
+{% extends "predictor/base.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height:60vh;">
+  
+  <div class="card shadow p-4" style="width:400px;">
+    
+    <h3 class="text-center mb-4">Doctor Login</h3>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <input type="text" name="username" class="form-control" placeholder="Admin Username" required>
+      </div>
+
+      <div class="mb-3">
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-dark">sign in</button>
+      </div>
+
+    </form>
+    
+
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "predictor/base.html" %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height:60vh;">
+
+  <div class="card shadow p-4" style="width:450px;">
+
+<h3 class="text-center mb-4">Upload Endoscopy Image</h3>
+
+<form method ="post" action="{% url 'predict' %}"  enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <div class="mb-3">
+    <input type="file" name="image" class="form-control" accept="image/*" required>
+  </div>
+
+  <div class="d-grid">
+    <button type="submit" class="btn btn-success">
+      Predict Disease
+    </button>
+  </div>
+
+</form>
+
+  </div>
+
+</div>
+
+{% endblock %}

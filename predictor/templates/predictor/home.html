@@ -1,0 +1,52 @@
+{% extends "predictor/base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Endoscopy AI System</h1>
+        <p class="text-muted">
+            AI-based Gastrointestinal Disease Detection using Endoscopy Images
+        </p>
+    </div>
+
+    <div class="row justify-content-center">
+
+        <!-- USER -->
+        <div class="col-md-5 mb-4">
+            <div class="card shadow-sm p-4 text-center border-0">
+
+                <h4>User Access</h4>
+                <p class="text-muted">
+                    Upload endoscopy images and get AI-based predictions.
+                </p>
+
+                <a href="{% url 'user_login' %}" class="btn btn-primary">
+                    User Login
+                </a>
+
+            </div>
+        </div>
+
+        <!-- ADMIN -->
+        <div class="col-md-5 mb-4">
+            <div class="card shadow-sm p-4 text-center border-0">
+
+                <h4>Admin Access</h4>
+                <p class="text-muted">
+                    Manage system, analyze results, and view model performance.
+                </p>
+
+                <a href="{% url 'admin_login' %}" class="btn btn-dark">
+                    Admin Login
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

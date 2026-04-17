@@ -1,0 +1,21 @@
+{% extends "predictor/base.html" %}
+
+{% block title %}Prediction History{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+  <h2>Prediction History</h2>
+
+{% if predictions %} <div class="table-responsive"> <table class="table table-striped"> <thead> <tr> <th>Date</th> <th>Image</th> <th>Predicted Disease</th> <th>Confidence</th> </tr> </thead> <tbody>
+{% for prediction in predictions %} <tr> <td>{{ prediction.created_at|date:"M d, Y H:i" }}</td> <td> <img src="{{ prediction.image.url }}" alt="Prediction Image" style="width: 100px; height: 100px; object-fit: cover;"> </td> <td> <span class="badge bg-{% if prediction.predicted_class == 'normal' %}success{% elif prediction.predicted_class == 'bleeding' %}danger{% elif prediction.predicted_class == 'polyp' %}warning{% else %}info{% endif %}">
+{{ prediction.predicted_class|upper }} </span> </td> <td>{{ prediction.confidence|floatformat:1 }}%</td> </tr>
+{% endfor %} </tbody> </table> </div>
+{% else %} <div class="alert alert-info"> <h4>No predictions yet</h4> <p>You haven't made any predictions yet. <a href="{% url 'predict' %}">Make your first prediction</a>.</p> </div>
+{% endif %}
+
+  <div class="mt-3">
+    <a href="{% url 'predict' %}" class="btn btn-primary">Make New Prediction</a>
+  </div>
+</div>
+{% endblock %}
