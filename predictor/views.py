@@ -46,7 +46,7 @@ def contact(request):
         if request.method == "POST":
             messages.success(request, "Message sent securely. We will reach you back shortly.")
             return redirect("contact")
-            return render(request, "predictor/contact.html")
+        return render(request, "predictor/contact.html")
 
 # ------------------ AUTH ------------------
 
@@ -278,7 +278,7 @@ def generate_pdf(request, result, confidence, advice, username, gradcam_path=Non
     content = []
 
     # 🏥 LOGO
-    logo_path = os.path.join(settings.BASE_DIR, 'static/images/logo.png')
+    logo_path = os.path.join(settings.BASE_DIR, 'predictor', 'static', 'images', 'logo.png')
     if os.path.exists(logo_path):
         content.append(Image(logo_path, width=100, height=50))
         content.append(Spacer(1, 10))
