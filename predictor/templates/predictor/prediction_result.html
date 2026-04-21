@@ -76,43 +76,58 @@
     </div>
 
     <!-- IMAGES -->
-    {% if not is_uncertain %}
-    <div class="row text-center">
+    <!-- IMAGES -->
+{% if not is_uncertain %}
 
-        <div class="col-md-3 mb-3">
-            <div class="card p-2 shadow-sm">
-                <h6>Original</h6>
-                <img src="{{ image_url }}" class="img-fluid rounded">
-            </div>
+<div class="row text-center">
+
+    <!-- ORIGINAL -->
+    {% if image_url %}
+    <div class="col-md-3 mb-3">
+        <div class="card p-2 shadow-sm">
+            <h6>Original</h6>
+            <img src="{{ image_url }}" class="img-fluid rounded">
         </div>
-
-        <div class="col-md-3 mb-3">
-            <div class="card p-2 shadow-sm">
-                <h6>Grad-CAM</h6>
-                <img src="{{ gradcam_url }}" class="img-fluid rounded">
-            </div>
-        </div>
-
-        <div class="col-md-3 mb-3">
-            <div class="card p-2 shadow-sm">
-                <h6>Layer-CAM</h6>
-                <img src="{{ layercam_url }}" class="img-fluid rounded">
-            </div>
-        </div>
-
-        <div class="col-md-3 mb-3">
-            <div class="card p-2 shadow-sm">
-                <h6>LIME</h6>
-                <img src="{{ lime_url }}" class="img-fluid rounded">
-            </div>
-        </div>
-
-    </div>
-    {% else %}
-    <div class="text-center mt-4">
-        <p class="text-muted">Heatmaps are hidden due to low confidence prediction.</p>
     </div>
     {% endif %}
+
+    <!-- GRADCAM -->
+    {% if gradcam_url %}
+    <div class="col-md-3 mb-3">
+        <div class="card p-2 shadow-sm">
+            <h6>Grad-CAM</h6>
+            <img src="{{ gradcam_url }}" class="img-fluid rounded">
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- LAYERCAM -->
+    {% if layercam_url %}
+    <div class="col-md-3 mb-3">
+        <div class="card p-2 shadow-sm">
+            <h6>Layer-CAM</h6>
+            <img src="{{ layercam_url }}" class="img-fluid rounded">
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- LIME -->
+    {% if lime_url %}
+    <div class="col-md-3 mb-3">
+        <div class="card p-2 shadow-sm">
+            <h6>LIME</h6>
+            <img src="{{ lime_url }}" class="img-fluid rounded">
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+{% else %}
+<div class="text-center mt-4">
+    <p class="text-muted">Heatmaps are hidden due to low confidence prediction.</p>
+</div>
+{% endif %}
 
     <p class="text-success text-center mt-3">
     ✔ Your report is ready for download
@@ -142,7 +157,7 @@
 </div>
 
 {% endif %}
-```
+
 
 </div>
 

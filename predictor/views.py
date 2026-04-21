@@ -211,6 +211,8 @@ def prediction_form(request):
                 predicted_class=result,
                 confidence=confidence
             )
+            print("IMAGE URL:", image_url)
+            print("GRADCAM URL:", gradcam_url)
 
             return render(request, "predictor/prediction_result.html", {
                 "result": result,

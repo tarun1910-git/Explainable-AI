@@ -7,6 +7,7 @@ import numpy as np
 from lime import lime_image
 from skimage.segmentation import mark_boundaries
 from tensorflow.keras.models import load_model
+from django.conf import settings
 
 # -----------------------
 
@@ -142,27 +143,24 @@ def predict_image(image_path):
     print("Gap:", gap)
 
     if confidence < 75 or gap < 0.20:
-         return (
-        "Invalid Image",
-        round(confidence, 2),
-        None,
-        None,
-        None,
-        "Model is not confident. Input may not be an endoscopy image.",
-        True,
-        predicted_class
-    )
-
+                    is_uncertain = True
+                    result = predicted_class
+    else:
+            is_uncertain = False
+    result = predicted_class
     result = predicted_class
     is_uncertain = False
 
 # -----------------------
 # Heatmaps
 # -----------------------
+    print("Reached heatmap section")
     img_uint8 = (img_processed * 255).astype("uint8")
 
-    media_dir = Path(__file__).resolve().parents[1] / "media"
+    media_dir= Path(settings.BASE_DIR) / "media"  
     media_dir.mkdir(parents=True, exist_ok=True)
+    
+    print("Saving to:", media_dir)
 
     # Grad-CAM
     heatmap = cv2.applyColorMap(img_uint8, cv2.COLORMAP_JET)
