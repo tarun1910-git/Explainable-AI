@@ -1,0 +1,32 @@
+{% extends "predictor/base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+
+<h3 class="mb-3">MobileNet Model Evaluation</h3>
+
+<button class="btn btn-primary mb-3">
+Run MobileNet Algorithm
+</button>
+
+<h4>Overall Metrics</h4>
+
+<table class="table table-bordered w-50">
+
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+
+{% for key, value in metrics.items %}
+<tr>
+<td>{{ key }}</td>
+<td>{{ value }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+{% endblock %}
